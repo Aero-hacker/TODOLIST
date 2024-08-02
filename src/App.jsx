@@ -56,9 +56,11 @@ function App() {
 
   useEffect(() => {
     let storeditems = localStorage.getItem("todo");
-    let parseditems = JSON.parse(storeditems);
-    setitems(parseditems);
-  },[]);
+    if (storeditems !== null) {
+      let parseditems = JSON.parse(storeditems);
+      setitems(parseditems);
+    }
+  }, []);
 
   return (
     <div className="main">
