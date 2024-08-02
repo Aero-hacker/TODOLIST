@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.maincont1 {
+  text-align: center;
+  background-color: black;
+  height: 10vh;
+  padding-top: 5%;
+}
+
+.head1 {
+  color: yellow;
+}
+
+.head2 {
+  color: skyblue;
+}
+
+.maincont2 {
+  background-color: grey;
+  min-height: 100vh;
+  padding-top: 10%;
+}
+
+.todocontainer {
+  display: flex;
+  justify-content: center;
+}
+
+.input1 {
+  display: flex;
+  gap: 1rem;
+}
+
+.todo {
+  padding: 0.5rem;
+  width: 300px;
+  border-radius: 10px;
+  border: 3px solid;
+}
+
+.todobtn {
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 3px solid;
+}
+
+.input2 {
+  display: flex;
+  gap: 1rem;
+}
+
+.searchbar {
+  padding: 0.5rem;
+  width: 300px;
+  border-radius: 10px;
+  border: 3px solid;
+}
+
+.searchbtn {
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 3px solid;
+}
+
+.lastcont {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.item {
+  width: 300px;
+  background-color: white;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.item:hover {
+  cursor: pointer;
+}
+
+.itemcont1 {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+.editbtn {
+  padding: 0.2rem;
+}
