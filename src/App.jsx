@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 //import { useRef } from "react";
 
 function App() {
@@ -18,7 +18,10 @@ function App() {
       id: crypto.randomUUID(),
       completed: false,
     };
-    setitems([...items, newitem]);
+    setitems(() => {
+      localStorage.setItem("todo", JSON.stringify([...items, newitem]));
+      return [...items, newitem];
+    });
     settodos("");
   }
 
@@ -30,6 +33,7 @@ function App() {
       return item;
     });
     setitems(newitems);
+    localStorage.setItem("todo", JSON.stringify(newitems));
   }
 
   function deletetodo(id) {
@@ -39,6 +43,7 @@ function App() {
       }
     });
     setitems(filteredarr);
+    localStorage.setItem("todo", JSON.stringify(filteredarr));
   }
 
   function edittodo(id, name) {
@@ -48,6 +53,13 @@ function App() {
     // });
     setedit({ id, name });
   }
+
+  useEffect(() => {
+    let storeditems = localStorage.getItem("todo");
+    let parseditems = JSON.parse(storeditems);
+    setitems(parseditems);
+  },[]);
+
   return (
     <div className="main">
       <div className="maincont1">
@@ -83,7 +95,7 @@ function App() {
               <div key={item.id} className="item">
                 <div className="itemcont1">
                   <input
-                    defaultValue={item.completed}
+                    defaultChecked={item.completed}
                     onClick={() => togglecheck(item.id)}
                     type="checkbox"
                   />
@@ -119,14 +131,15 @@ function App() {
                   />
                   <button
                     onClick={() => {
-                     let newarr= items.map((item) => {
+                      let newarr = items.map((item) => {
                         if (item.id == edit.id) {
-                         item.name = edit.name;
+                          item.name = edit.name;
                         }
-                        return item
+                        return item;
                       });
-                      setitems(newarr)
-                      setopendialog(false)
+                      setitems(newarr);
+                      setopendialog(false);
+                      localStorage.setItem("todo", JSON.stringify(newarr));
                     }}
                   >
                     save
